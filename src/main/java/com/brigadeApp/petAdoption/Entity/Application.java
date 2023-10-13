@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,28 +15,26 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Application {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long user_id;
+    private long app_id;
 
     @Column
-    private String first_name;
+    private String status;
 
     @Column
-    private String last_name;
+    private Date date;
 
-    @JoinColumn(name = "role_id")
     @ManyToOne
-    private UserRole role;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column
-    private String username;
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
+    private Pet pet;
 
-    @Column
-    private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Application> applicationLis;
+
 }
