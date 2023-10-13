@@ -6,7 +6,9 @@ import com.brigadeApp.petAdoption.Entity.Pet;
 
 public interface PetListInterface {
 
-	 List<Pet> getPet();
+	public List<Pet> getPet();
+
+	public List<Pet> addPet(Pet pet);
 
 	
 
