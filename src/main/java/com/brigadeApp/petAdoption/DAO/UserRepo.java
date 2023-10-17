@@ -7,6 +7,6 @@ import com.brigadeApp.petAdoption.Entity.User;
 
 public interface UserRepo extends JpaRepository<User, Long> {
 
-    @Query("select * from user where role_id =?")
+    @Query(value = "SELECT * FROM user WHERE role_id =?", nativeQuery = true)
     public User findUserByRole(int id);
 }
