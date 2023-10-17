@@ -35,7 +35,4 @@ public class User {
 
     @Column
     private String password;
-
-    @OneToMany(mappedBy = "user")
-    private List<Application> applicationLis;
 }

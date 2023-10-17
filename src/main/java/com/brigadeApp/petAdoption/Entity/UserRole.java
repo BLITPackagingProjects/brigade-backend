@@ -14,10 +14,10 @@ import lombok.Setter;
 @Setter
 public class UserRole {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int role_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int role_id;
 
-    @Column
-    private String roleName;
+	@Column
+	private String roleName;
 }
