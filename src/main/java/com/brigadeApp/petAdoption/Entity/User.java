@@ -4,9 +4,8 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table
@@ -92,4 +91,5 @@ public class User {
 
 	    @OneToMany(mappedBy = "user")
 	    private List<Application> applicationLis;
+
 }

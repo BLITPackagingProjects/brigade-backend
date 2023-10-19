@@ -25,6 +25,11 @@ public class UserRole {
 
     @Column
     private String roleName;
+
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
    
    
