@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.brigadeApp.petAdoption.DAO.UserDao;
 import com.brigadeApp.petAdoption.DAO.Userrolerepo;
 import com.brigadeApp.petAdoption.Entity.User;
-import com.brigadeApp.petAdoption.Entity.UserRole;
+import com.brigadeApp.petAdoption.Entity.User_Role;
 
 @Service
 public class UserServiceImo implements UserService {
@@ -23,7 +23,7 @@ public class UserServiceImo implements UserService {
 	public User createUser(User user) {
 		final int logRounds =12;
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(logRounds)));
-		UserRole role = userrolerepo.findById(1).get();
+		User_Role role = userrolerepo.findById(1).get();
 		user.setRole(role);
        return userdao.save(user); 
        

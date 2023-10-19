@@ -41,11 +41,11 @@ public class User {
 			this.last_name = last_name;
 		}
 
-		public UserRole getRole() {
+		public User_Role getRole() {
 			return role;
 		}
 
-		public void setRole(UserRole role) {
+		public void setRole(User_Role role) {
 			this.role = role;
 		}
 
@@ -81,9 +81,9 @@ public class User {
 
 	    @JoinColumn(name = "role_id")
 	    @ManyToOne
-	    private UserRole role;
+	    private User_Role role;
 
-	    @Column
+	    @Column(unique = true)
 	    private String username;
 
 	    @Column
