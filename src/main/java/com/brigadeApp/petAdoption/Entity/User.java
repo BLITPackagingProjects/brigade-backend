@@ -1,5 +1,6 @@
 package com.brigadeApp.petAdoption.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class User {
     @Column
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Application> applicationLis;
 }
