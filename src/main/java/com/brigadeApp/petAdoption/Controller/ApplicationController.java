@@ -18,9 +18,9 @@ public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
 
-    @GetMapping("/{id}")
-    public List<Application> getAllApplicationsForUser(@PathVariable("id") int id) {
-        return applicationService.showListOfAppFor(id);
+    @GetMapping("/{id}/{empId}")
+    public List<Application> getAllApplicationsForUser(@PathVariable("id") int id, @PathVariable("empId") long empId) {
+        return applicationService.showListOfAppFor(id, empId);
 
     }
 
