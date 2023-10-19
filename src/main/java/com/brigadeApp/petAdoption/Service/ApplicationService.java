@@ -1,5 +1,6 @@
 package com.brigadeApp.petAdoption.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -12,7 +13,9 @@ import com.brigadeApp.petAdoption.DAO.UserRepo;
 import com.brigadeApp.petAdoption.Entity.Application;
 import com.brigadeApp.petAdoption.Entity.Pet;
 import com.brigadeApp.petAdoption.Entity.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ApplicationService {
 
     @Autowired
@@ -24,16 +27,8 @@ public class ApplicationService {
     @Autowired
     PetRepo petRepo;
 
-    public List<Application> showListOfAppFor(int role_id, long id) {
-        List<User> userlList = userRepo.findUsersByRole(role_id);
-        User newUser = null;
-        for (User objUser : userlList) {
-            if (objUser.getUser_id() == id) {
-                newUser = objUser;
-            }
-
-        }
-        return newUser.getApplicationLis();
+    public List<Application> showListOfAppFor() {
+       return applciationRepo.findAll();
     }
 
     public Application createApplication(long pet_id, Application application, long cust_id) {
@@ -44,6 +39,7 @@ public class ApplicationService {
 
         application.setUser(user);
         application.setPet(pet);
+        application.setDate(new Date());
         applciationRepo.save(application);
         return application;
 

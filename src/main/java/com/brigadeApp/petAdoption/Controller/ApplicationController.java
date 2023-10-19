@@ -3,10 +3,7 @@ package com.brigadeApp.petAdoption.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.brigadeApp.petAdoption.Entity.Application;
 import com.brigadeApp.petAdoption.Service.ApplicationService;
@@ -18,10 +15,14 @@ public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
 
-    @GetMapping("/{id}/{empId}")
-    public List<Application> getAllApplicationsForUser(@PathVariable("id") int id, @PathVariable("empId") long empId) {
-        return applicationService.showListOfAppFor(id, empId);
+    @GetMapping
+    public List<Application> getAllApplicationsForUser() {
+        return applicationService.showListOfAppFor();
 
     }
 
+    @PostMapping("/{userId}/{petId}")
+    public Application createApp(@RequestBody Application application, @PathVariable("userId") long userId, @PathVariable("petId") long petId){
+        return applicationService.createApplication(petId,application,userId);
+    }
 }
