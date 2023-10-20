@@ -1,5 +1,7 @@
 package com.brigadeApp.petAdoption.Controller;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,24 @@ public class AuthController {
 	        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 	                loginDto.getUsername(), loginDto.getPassword()));
 	        SecurityContextHolder.getContext().setAuthentication(authentication);
-	        return new ResponseEntity<>("User login successfully!.", HttpStatus.OK);
+	        
+	        String [] ctxArray = SecurityContextHolder.getContext().toString().split(" ");
+	        String Role = ctxArray[10].substring(0, ctxArray[10].length()-3);
+	        Role = Role.replace("[", "");
+	        Role = Role.split("=")[1];
+	        /*
+	        List<String> ctx = new ArrayList<>(); 
+	        ctx.add(ctxArray[3].substring(1, ctxArray[3].length()-1)); 
+	        ctx.add(ctxArray[5].substring(0, ctxArray[5].length()-1));
+	        ctx.add(ctxArray[6].substring(0, ctxArray[6].length()-1));
+	        ctx.add(ctxArray[7].substring(0, ctxArray[7].length()-1));
+	        ctx.add(ctxArray[8].substring(0, ctxArray[8].length()-1));
+	        ctx.add(ctxArray[12].substring(0, ctxArray[12].length()-1));
+	        ctx.add(temp);
+	         //System.out.println(ctx);
+	         */
+	        return new ResponseEntity<>(Role, HttpStatus.OK);
+	        
 	        /*
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.set("X-Get-Header", "ExampleHeader");
