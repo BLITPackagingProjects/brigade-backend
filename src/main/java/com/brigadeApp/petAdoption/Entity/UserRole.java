@@ -1,23 +1,39 @@
 package com.brigadeApp.petAdoption.Entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table
-@Getter
-@Setter
 public class UserRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer role_id;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int role_id;
+    @Column
+    private String name;
 
-	@Column
-	private String roleName;
+    public UserRole() {
+    }
+
+    public Integer getId() {
+        return role_id;
+    }
+
+    public void setId(Integer id) {
+        this.role_id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
