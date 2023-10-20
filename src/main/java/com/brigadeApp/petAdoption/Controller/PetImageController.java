@@ -3,13 +3,10 @@ package com.brigadeApp.petAdoption.Controller;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.brigadeApp.petAdoption.Entity.ImageResponse;
 import com.brigadeApp.petAdoption.Entity.Pet;
 import com.brigadeApp.petAdoption.Service.PetImageServImpl;
 
@@ -32,41 +29,37 @@ public class PetImageController{
     private String imageUploadPath;
 
     @PostMapping("/pet")
-	public Pet addPet(@RequestBody Pet pet) {
-		return petImageServImpl.savePet(pet);
-	}
-
-    @PostMapping("/pet/image/{petId}")
-    public ResponseEntity<ImageResponse> uploadImage(
+    public Pet registerPet(
             @RequestParam("petImage") MultipartFile image,
-            @PathVariable("petId") long petId ) throws IOException {
+            @RequestParam("name") String name,
+            @RequestParam("age") String age,
+            @RequestParam("color") String color,
+            @RequestParam("breed") String breed,
+            @RequestParam("type") String type) throws IOException {
+        
+        //Uploaded the file but the name is not uploaded yet
+        String imageName = petImageServImpl.uploadFile(image, imageUploadPath);
 
-        String imageName = petImageServImpl.uploadFile(image, imageUploadPath);//Uploaded the file but the name is not uploaded yet
-        Pet petDB = petImageServImpl.getPetById(petId);
-
+        //save new pet into db
+        Pet petDB = new Pet();
         petDB.setImage(imageName); //Set the image name of the image that is uploaded by the client
-
-        petImageServImpl.savePet(petDB); //Saving of user image name into database
-
-        ImageResponse imageResponse = ImageResponse.builder()
-                .imageName(imageName)
-                .message("Image uploaded")
-                .status(HttpStatus.OK)
-                .success(true)
-                .build();
-        return new ResponseEntity<>(imageResponse, HttpStatus.OK);
+        petDB.setAge(Integer.valueOf(age));
+        petDB.setBreed(breed);
+        petDB.setColor(color);
+        petDB.setType(type);
+        petDB.setName(name);
+        return petImageServImpl.savePet(petDB); //Saving of user image name into database
     }
 
     @GetMapping("/pet/image/{petId}")
-    public void getUserImage(
+    public void getPetImage(
             @PathVariable("petId") long petId,
             HttpServletResponse response
     ) throws IOException {
-
         Pet petDB  = petImageServImpl.getPetById(petId);
         InputStream inputStream = petImageServImpl.getResource(imageUploadPath,petDB.getImage());
         response.setContentType(MediaType.IMAGE_PNG_VALUE);
         StreamUtils.copy(inputStream, response.getOutputStream());
-
     }
+    
 }
