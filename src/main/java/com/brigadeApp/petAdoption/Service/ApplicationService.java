@@ -27,7 +27,7 @@ public class ApplicationService {
     public List<Application> showListOfAppFor() {
        return applciationRepo.findAll();
     }
-
+    public List<Application> showApplicationsforCustomer(user_id )
     public Application createApplication(long pet_id, Application application, long cust_id) {
 
         Pet pet = petRepo.findById(pet_id).orElseThrow(() -> new RuntimeException("Pet not found"));

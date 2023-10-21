@@ -9,8 +9,8 @@ import java.util.List;
 @Table
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
@@ -29,11 +29,11 @@ public class User {
     @JoinColumn(name = "role_id")
     private UserRole role;
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -83,8 +83,5 @@ public class User {
                 + ", password=" + password + ", role=" + role + "]";
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4d7e65f50097c6632748431b96f8594800b12b29
+

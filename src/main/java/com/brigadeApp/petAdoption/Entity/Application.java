@@ -34,6 +34,46 @@ public class Application {
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
+	public long getApp_id() {
+		return app_id;
+	}
+
+	public void setApp_id(long app_id) {
+		this.app_id = app_id;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+
 
 
 }
