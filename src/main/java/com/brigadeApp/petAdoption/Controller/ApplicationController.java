@@ -22,7 +22,8 @@ public class ApplicationController {
     }
 
     @PostMapping("/{userId}/{petId}")
-    public Application createApp(@RequestBody Application application, @PathVariable("userId") long userId, @PathVariable("petId") long petId){
-        return applicationService.createApplication(petId,application,userId);
+    public Application createApp(@RequestBody Application application, @PathVariable("userId") long userId,
+            @PathVariable("petId") long petId) {
+        return applicationService.createApplication(petId, application, userId);
     }
 }

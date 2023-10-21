@@ -2,11 +2,15 @@ package com.brigadeApp.petAdoption.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
