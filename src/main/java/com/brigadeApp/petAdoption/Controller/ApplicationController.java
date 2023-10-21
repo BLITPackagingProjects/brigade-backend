@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.brigadeApp.petAdoption.Entity.Application;
 import com.brigadeApp.petAdoption.Service.ApplicationService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/application")
 public class ApplicationController {

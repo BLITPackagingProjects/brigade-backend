@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Table
 public class UserRole {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int role_id;
 
     @Column
@@ -20,11 +20,11 @@ public class UserRole {
     public UserRole() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return role_id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.role_id = id;
     }
 

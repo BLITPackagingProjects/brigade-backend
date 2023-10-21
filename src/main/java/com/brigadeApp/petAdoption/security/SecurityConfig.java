@@ -29,11 +29,15 @@ SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	http.authorizeHttpRequests(
 			configurer -> configurer
 			.requestMatchers(HttpMethod.GET, "/login/**").permitAll()
-			.requestMatchers(HttpMethod.POST, "/register").permitAll()
+			.requestMatchers(HttpMethod.POST, "/user").permitAll()
 			.requestMatchers(HttpMethod.GET,"/pet/application").hasRole("EMPLOYEE")
 			.requestMatchers(HttpMethod.POST,"/pet/application").hasRole("USER")
-			.requestMatchers(HttpMethod.GET, "/pet/**").permitAll()
-			.requestMatchers(HttpMethod.GET,"/home/**").permitAll()
+					.requestMatchers(HttpMethod.GET,"/home/**").permitAll()
+					.requestMatchers(HttpMethod.GET, "api/v1/pet/**").permitAll()					.requestMatchers(HttpMethod.GET, "api/v1/pet/**").permitAll()
+					.requestMatchers(HttpMethod.GET, "pet/**").permitAll()
+
+					.requestMatchers(HttpMethod.POST, "api/v1/pet/**").permitAll()
+
 			.anyRequest().authenticated()
 			); 
 	
