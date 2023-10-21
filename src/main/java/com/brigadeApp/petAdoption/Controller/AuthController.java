@@ -73,10 +73,6 @@ public class AuthController {
 		return "Say my name";
 	}
 
-	@GetMapping("/pet")
-	public String getAllPet() {
-		return "All pet here";
-	}
 
 	@PostMapping("/register")
 	public void empRegister(@RequestBody User emp) {
