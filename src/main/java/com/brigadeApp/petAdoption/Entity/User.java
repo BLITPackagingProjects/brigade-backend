@@ -18,6 +18,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Application> applicationLis;
+
     @Column(nullable = false)
     private String password;
 

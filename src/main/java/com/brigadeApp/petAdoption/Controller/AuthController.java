@@ -38,7 +38,7 @@ public class AuthController {
 	private RoleRepository roleRepo;
 
 	@PostMapping("/login")
-	public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto) {
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginDto loginDto) {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 				loginDto.getUsername(), loginDto.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -47,6 +47,7 @@ public class AuthController {
 		String Role = ctxArray[10].substring(0, ctxArray[10].length() - 3);
 		Role = Role.replace("[", "");
 		Role = Role.split("=")[1];
+		System.out.println(SecurityContextHolder.getContext().toString());
 		/*
 		 * List<String> ctx = new ArrayList<>();
 		 * ctx.add(ctxArray[3].substring(1, ctxArray[3].length()-1));
@@ -58,7 +59,8 @@ public class AuthController {
 		 * ctx.add(temp);
 		 * //System.out.println(ctx);
 		 */
-		return new ResponseEntity<>(Role, HttpStatus.OK);
+		String uname = loginDto.getUsername();
+		return new ResponseEntity<>(repository.findByUsername(uname), HttpStatus.OK);
 
 		/*
 		 * HttpHeaders headers = new HttpHeaders();
@@ -72,7 +74,6 @@ public class AuthController {
 
 		return "Say my name";
 	}
-
 
 	@PostMapping("/register")
 	public void empRegister(@RequestBody User emp) {
