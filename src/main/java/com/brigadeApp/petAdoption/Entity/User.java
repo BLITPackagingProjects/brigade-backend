@@ -1,7 +1,9 @@
 package com.brigadeApp.petAdoption.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
 
 @Entity
 @Table
@@ -15,55 +17,66 @@ public class User {
     private String lastName;
     @Column(nullable = false, unique = true)
     private String username;
-    
+
     @Column(nullable = false)
-    private String password;    
-    
-	@ManyToOne
-	@JoinColumn(name="role_id")
-    private User_Role role;    
-    
-    
+    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private UserRole role;
+
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String name) {
         this.firstName = name;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String name) {
         this.lastName = name;
     }
+
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
-    public User_Role getRole() {
+
+    public UserRole getRole() {
         return role;
     }
-    public void setRole(User_Role role) {
+
+    public void setRole(UserRole role) {
         this.role = role;
     }
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", password=" + password + ", role=" + role + "]";
-	}
-    
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+                + ", password=" + password + ", role=" + role + "]";
+    }
+
 }
