@@ -28,7 +28,6 @@ public class Pet {
 
 	@Column
 	private String type;
-	
 	@Column
 	private String color;
 
@@ -39,6 +38,5 @@ public class Pet {
 
 	@Column
 	private String image;
-	
-	
+
 }

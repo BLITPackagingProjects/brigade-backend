@@ -83,4 +83,8 @@ public class User {
                 + ", password=" + password + ", role=" + role + "]";
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4d7e65f50097c6632748431b96f8594800b12b29
