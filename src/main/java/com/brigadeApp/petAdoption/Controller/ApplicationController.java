@@ -3,6 +3,7 @@ package com.brigadeApp.petAdoption.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.brigadeApp.petAdoption.Entity.Application;
@@ -22,8 +23,14 @@ public class ApplicationController {
 
     }
 
+    @GetMapping("/{userId}")
+    public List<Application> fetchApplicationsForCust(@PathVariable("userId") long userId) {
+        return applicationService.showApplicationsforCustomer(userId);
+
+    }
+
     @PostMapping("/{userId}/{petId}")
-    public Application createApp(@RequestBody Application application, @PathVariable("userId") long userId,
+    public ResponseEntity<?> createApp(@RequestBody Application application, @PathVariable("userId") long userId,
             @PathVariable("petId") long petId) {
         return applicationService.createApplication(petId, application, userId);
     }

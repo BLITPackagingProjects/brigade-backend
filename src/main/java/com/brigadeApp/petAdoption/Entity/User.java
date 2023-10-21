@@ -26,6 +26,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Application> applicationLis;
 
+    public List<Application> getApplicationLis() {
+        return applicationLis;
+    }
+
+    public void setApplicationLis(List<Application> applicationLis) {
+        this.applicationLis = applicationLis;
+    }
+
     @Column(nullable = false)
     private String password;
 

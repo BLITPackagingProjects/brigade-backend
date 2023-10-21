@@ -24,7 +24,7 @@ import com.brigadeApp.petAdoption.dto.LoginDto;
 import com.brigadeApp.petAdoption.repository.RoleRepository;
 import com.brigadeApp.petAdoption.repository.UserRepository;
 
-@CrossOrigin(origins = { "http://localhost:5173" })
+@CrossOrigin
 @RestController
 // @RequestMapping("/api")
 public class AuthController {

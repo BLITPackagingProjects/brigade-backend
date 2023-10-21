@@ -34,4 +34,5 @@ public class Application {
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
+
 }

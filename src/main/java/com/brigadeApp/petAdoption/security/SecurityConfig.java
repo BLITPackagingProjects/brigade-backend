@@ -33,8 +33,10 @@ SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 			.requestMatchers(HttpMethod.GET,"/pet/application").hasRole("EMPLOYEE")
 			.requestMatchers(HttpMethod.POST,"/pet/application").hasRole("USER")
 					.requestMatchers(HttpMethod.GET,"/home/**").permitAll()
-					.requestMatchers(HttpMethod.GET, "api/v1/pet/**").permitAll()					.requestMatchers(HttpMethod.GET, "api/v1/pet/**").permitAll()
 					.requestMatchers(HttpMethod.GET, "pet/**").permitAll()
+					.requestMatchers(HttpMethod.GET, "api/v1/pet/**").permitAll()
+					.requestMatchers(HttpMethod.POST, "/application/**").permitAll()
+					.requestMatchers(HttpMethod.GET, "/application/**").permitAll()
 
 					.requestMatchers(HttpMethod.POST, "api/v1/pet/**").permitAll()
 
