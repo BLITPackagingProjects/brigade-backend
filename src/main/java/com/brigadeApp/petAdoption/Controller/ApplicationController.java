@@ -34,4 +34,14 @@ public class ApplicationController {
             @PathVariable("petId") long petId) {
         return applicationService.createApplication(petId, application, userId);
     }
+    
+    @PutMapping("/update/{id}")
+	public Application updateApplication(@RequestBody Application app, @PathVariable Long id) {
+		return applicationService.updateApplication(app, id);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public void deleteApplicationById(@PathVariable Long id) {
+		applicationService.deleteById(id);
+	}
 }

@@ -2,6 +2,8 @@ package com.brigadeApp.petAdoption.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,5 +56,23 @@ public class ApplicationService {
         return new ResponseEntity<Application>(application, HttpStatus.OK);
 
     }
+    
+    @SuppressWarnings("unlikely-arg-type")
+    public Application updateApplication(Application app, Long id) {
+		Application appDB = applciationRepo.findById(id).get();
+		
+		
+//		if(Objects.nonNull(app.getStatus()) &&
+//				!"".equalsIgnoreCase(app.getStatus())) {
+//			appDB.setStatus(app.getStatus());
+//		}
+		appDB.setStatus(app.getStatus());
+		return applciationRepo.save(appDB);
+	}
+
+	public void deleteById(Long id) {
+		applciationRepo.deleteById(id);
+		
+	}
 
 }

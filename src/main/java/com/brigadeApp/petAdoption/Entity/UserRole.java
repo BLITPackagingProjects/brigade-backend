@@ -16,7 +16,7 @@ public class UserRole {
 
     @Column
     private String name;
-
+    
     public UserRole() {
     }
 
@@ -28,12 +28,22 @@ public class UserRole {
         this.role_id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+	public int getRole_id() {
+		return role_id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
+	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+    
+    
+    
 }
