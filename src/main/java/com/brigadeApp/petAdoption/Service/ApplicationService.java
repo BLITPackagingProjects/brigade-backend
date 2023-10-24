@@ -54,5 +54,11 @@ public class ApplicationService {
         return new ResponseEntity<Application>(application, HttpStatus.OK);
 
     }
+    public Application updateApp(long id, Application application1){
+        Application application = applciationRepo.findById(id).get();
+        application.setStatus(application1.getStatus());
+        applciationRepo.save(application);
+        return application;
+    }
 
 }
