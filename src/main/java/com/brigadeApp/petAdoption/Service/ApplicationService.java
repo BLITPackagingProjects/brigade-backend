@@ -61,4 +61,9 @@ public class ApplicationService {
         return application;
     }
 
+    public String deleteApp(long id){
+        applciationRepo.deleteById(id);
+        return "Deleted";
+    }
+
 }

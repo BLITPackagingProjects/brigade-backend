@@ -44,6 +44,7 @@ SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 					.requestMatchers(HttpMethod.POST, "/application/**").permitAll()
 					.requestMatchers(HttpMethod.GET, "/application/**").permitAll()
 					.requestMatchers(HttpMethod.PUT, "/application/**").permitAll()
+					.requestMatchers(HttpMethod.DELETE, "/application/delete/**").permitAll()
 
 					.requestMatchers(HttpMethod.POST, "api/v1/pet/**").permitAll()
 

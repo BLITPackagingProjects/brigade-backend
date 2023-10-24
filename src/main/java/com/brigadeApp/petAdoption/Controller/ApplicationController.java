@@ -40,4 +40,9 @@ public class ApplicationController {
     public ResponseEntity<Application> updateApplication(@RequestBody Application application, @PathVariable("id") long id){
         return new ResponseEntity<Application>(applicationService.updateApp(id, application), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteApplication(@PathVariable("id") long id){
+        return applicationService.deleteApp(id);
+    }
 }
