@@ -22,7 +22,7 @@ public class UserServiceImo implements UserService {
 	public User createUser(User user) {
 		final int logRounds = 12;
 		user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(logRounds)));
-		UserRole role = userrolerepo.findById(1).get();
+		UserRole role = userrolerepo.findById(2).get();
 		user.setRole(role);
 		return userdao.save(user);
 
