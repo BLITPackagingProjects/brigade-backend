@@ -3,6 +3,7 @@ package com.brigadeApp.petAdoption.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +34,10 @@ public class ApplicationController {
     public ResponseEntity<?> createApp(@RequestBody Application application, @PathVariable("userId") long userId,
             @PathVariable("petId") long petId) {
         return applicationService.createApplication(petId, application, userId);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Application> updateApplication(@RequestBody Application application, @PathVariable("id") long id){
+        return new ResponseEntity<Application>(applicationService.updateApp(id, application), HttpStatus.OK);
     }
 }

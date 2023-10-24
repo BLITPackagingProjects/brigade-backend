@@ -43,6 +43,7 @@ SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 					.requestMatchers(HttpMethod.GET, "api/v1/pet/**").permitAll()
 					.requestMatchers(HttpMethod.POST, "/application/**").permitAll()
 					.requestMatchers(HttpMethod.GET, "/application/**").permitAll()
+					.requestMatchers(HttpMethod.PUT, "/application/**").permitAll()
 
 					.requestMatchers(HttpMethod.POST, "api/v1/pet/**").permitAll()
 
